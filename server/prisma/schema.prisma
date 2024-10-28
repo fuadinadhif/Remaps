@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum PlaceType {
+  HOTEL
+  APARTMENT
+  VILLA
+}
+
+model Place {
+  id        String    @id @default(uuid())
+  name      String
+  type      PlaceType
+  lat       Float
+  lng       Float
+  imageUrl  String
+  createdAt DateTime  @default(now())
+}
